@@ -236,35 +236,7 @@
         };
 
         const AppDetailView = ({ app, onBack }) => {
-            useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const appId = params.get("app");
-
-    if (appId) {
-        const app = MOCK_APPS.find(a => a.id === appId);
-
-        if (app) {
-            setSelectedApp(app);
-            setCurrentView("detail");
-        }
-    }
-
-    window.onpopstate = () => {
-        const params = new URLSearchParams(window.location.search);
-        const appId = params.get("app");
-
-        if (appId) {
-            const app = MOCK_APPS.find(a => a.id === appId);
-            if (app) {
-                setSelectedApp(app);
-                setCurrentView("detail");
-            }
-        } else {
-            setSelectedApp(null);
-            setCurrentView("home");
-        }
-    };
-}, []);
+            useEffect(() => { window.scrollTo(0, 0); }, []);
 
             return (
                 <div className="fade-in slide-in-from-right-8 duration-500 pb-24 min-h-screen">
@@ -339,16 +311,16 @@
                                         Jika muncul peringatan seperti "Aplikasi Berbahaya" atau "Aplikasi Berisiko", hal tersebut biasanya karena aplikasi diunduh dari luar Google Play Store, bukan karena mengandung virus. Apabila instalasi diblokir, Anda dapat menonaktifkan Google Play Protect sementara, lalu mengaktifkannya kembali setelah proses instalasi selesai.</p>
                                     </div>
                                 </div>
-<button
+                                <button
     onClick={() => {
-        const shareUrl = `${window.location.origin}${window.location.pathname}?app=${app.id}`;
+        const shareUrl = window.location.href;
 
         if (navigator.share) {
             navigator.share({
                 title: app.title,
-                text: `Download ${app.title} di Dhikzzz Galaxy`,
-                url: shareUrl,
-            });
+                text: `Download ${app.title} dari Dhikzzz Galaxy`,
+                url: shareUrl
+            }).catch(() => {});
         } else {
             navigator.clipboard.writeText(shareUrl);
             alert("Link aplikasi berhasil disalin!");
@@ -372,11 +344,9 @@
             const [searchQuery, setSearchQuery] = useState('');
             const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-            const navigateToDetail = (app) => {
-    window.history.pushState({}, "", `?app=${app.id}`);
-    setSelectedApp(app);
-    setCurrentView("detail");
-};
+            const navigateToDetail = (app) => { setSelectedApp(app); setCurrentView('detail'); };
+            const navigateToHome = () => { setSelectedApp(null); setCurrentView('home'); };
+
             return (
                 <div className="min-h-screen bg-[#05050a] text-slate-200 font-sans selection:bg-cyan-500/30 overflow-x-hidden">
                     <div className="fixed inset-0 pointer-events-none z-0 opacity-40">
@@ -395,11 +365,7 @@
                                     <span className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-slate-100 to-slate-400 group-hover:text-white transition-colors">Dhikzzz Galaxy</span>
                                 </div>
                                 <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
-const navigateToHome = () => {
-    window.history.pushState({}, "", window.location.pathname);
-    setSelectedApp(null);
-    setCurrentView("home");
-};
+                                    <button onClick={navigateToHome} className={`${currentView === 'home' ? 'text-cyan-400' : 'hover:text-slate-100'} transition-colors`}>Home</button>
                                     <button className="hover:text-slate-100 transition-colors">Apps</button>
                                     <button className="hover:text-slate-100 transition-colors">Games</button>
                                     <button className="hover:text-slate-100 transition-colors">Request</button>
