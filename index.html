@@ -311,9 +311,25 @@
                                         Jika muncul peringatan seperti "Aplikasi Berbahaya" atau "Aplikasi Berisiko", hal tersebut biasanya karena aplikasi diunduh dari luar Google Play Store, bukan karena mengandung virus. Apabila instalasi diblokir, Anda dapat menonaktifkan Google Play Protect sementara, lalu mengaktifkannya kembali setelah proses instalasi selesai.</p>
                                     </div>
                                 </div>
-                                <button onClick={() => alert("Link berhasil disalin!")} className="w-full py-4 rounded-2xl bg-white/[0.03] border border-white/10 text-slate-300 font-semibold flex items-center justify-center gap-2 hover:bg-white/[0.08] transition-colors">
-                                    <Share2 size={18} /> Bagikan Aplikasi
-                                </button>
+                                <button
+    onClick={() => {
+        const shareUrl = window.location.href;
+
+        if (navigator.share) {
+            navigator.share({
+                title: app.title,
+                text: `Download ${app.title} dari Dhikzzz Galaxy`,
+                url: shareUrl
+            }).catch(() => {});
+        } else {
+            navigator.clipboard.writeText(shareUrl);
+            alert("Link aplikasi berhasil disalin!");
+        }
+    }}
+    className="w-full py-4 rounded-2xl bg-white/[0.03] border border-white/10 text-slate-300 font-semibold flex items-center justify-center gap-2 hover:bg-white/[0.08] transition-colors"
+>
+    <Share2 size={18} /> Bagikan Aplikasi
+</button>
                             </div>
                         </div>
                     </div>
