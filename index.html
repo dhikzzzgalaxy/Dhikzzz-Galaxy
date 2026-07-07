@@ -241,23 +241,7 @@ premium: "bg-[#0D1931] text-[#2CB5FF] border border-[#1EA7FF] shadow-[0_0_15px_r
         };
 
         const AppDetailView = ({ app, onBack }) => {
-            useEffect(() => {
-    window.history.replaceState({ page: "home" }, "");
-
-    const handleBack = () => {
-        if (currentView === "detail") {
-            setSelectedApp(null);
-            setCurrentView("home");
-            window.history.pushState({ page: "home" }, "");
-        }
-    };
-
-    window.addEventListener("popstate", handleBack);
-
-    return () => {
-        window.removeEventListener("popstate", handleBack);
-    };
-}, [currentView]);
+            useEffect(() => { window.scrollTo(0, 0); }, []);
 
             return (
                 <div className="fade-in slide-in-from-right-8 duration-500 pb-24 min-h-screen">
@@ -385,15 +369,8 @@ premium: "bg-[#0D1931] text-[#2CB5FF] border border-[#1EA7FF] shadow-[0_0_15px_r
             const [searchQuery, setSearchQuery] = useState('');
             const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-            const navigateToDetail = (app) => {
-    window.history.pushState({ page: "detail" }, "");
-    setSelectedApp(app);
-    setCurrentView("detail");
-};
-            const navigateToHome = () => {
-    setSelectedApp(null);
-    setCurrentView("home");
-};
+            const navigateToDetail = (app) => { setSelectedApp(app); setCurrentView('detail'); };
+            const navigateToHome = () => { setSelectedApp(null); setCurrentView('home'); };
 
             return (
                 <div className="min-h-screen bg-[#05050a] text-slate-200 font-sans selection:bg-cyan-500/30 overflow-x-hidden">
