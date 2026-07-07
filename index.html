@@ -241,7 +241,26 @@ premium: "bg-[#0D1931] text-[#2CB5FF] border border-[#1EA7FF] shadow-[0_0_15px_r
         };
 
         const AppDetailView = ({ app, onBack }) => {
-            useEffect(() => { window.scrollTo(0, 0); }, []);
+            useEffect(() => {
+    // Membuat satu history agar tombol Back bisa ditangkap
+    window.history.pushState(null, "", window.location.href);
+
+    const handleBackButton = () => {
+        if (currentView === "detail") {
+            setCurrentView("home");
+            setSelectedApp(null);
+
+            // Tambahkan lagi history agar website tidak langsung keluar
+            window.history.pushState(null, "", window.location.href);
+        }
+    };
+
+    window.addEventListener("popstate", handleBackButton);
+
+    return () => {
+        window.removeEventListener("popstate", handleBackButton);
+    };
+}, [currentView]);
 
             return (
                 <div className="fade-in slide-in-from-right-8 duration-500 pb-24 min-h-screen">
