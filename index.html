@@ -317,7 +317,6 @@ premium: "bg-[#0D1931] text-[#2CB5FF] border border-[#1EA7FF] shadow-[0_0_15px_r
                         <p className="text-xs text-slate-400 truncate mt-0.5">{app.developer}</p>
                         <div className="flex items-center gap-3 mt-3 text-xs text-slate-300">
                             <span className="flex items-center gap-1"><Star size={12} className="text-yellow-400 fill-yellow-400" /> {app.rating}</span>
-                            <span className="flex items-center gap-1 text-slate-500">•</span>
                             <span className="flex items-center gap-1"><Download size={12} className="text-cyan-400" /> {app.size}</span>
                         </div>
                     </div>
@@ -326,7 +325,32 @@ premium: "bg-[#0D1931] text-[#2CB5FF] border border-[#1EA7FF] shadow-[0_0_15px_r
         );
 
         // --- VIEWS ---
-        const HomeView = ({ onAppSelect, searchQuery, setSearchQuery }) => {
+        // --- VIEW: TAMPILAN SEMUA APLIKASI ---
+        const AllAppsView = ({ onAppSelect, onBack }) => {
+            useEffect(() => { window.scrollTo(0, 0); }, []);
+
+            return (
+                <div className="fade-in slide-in-from-bottom-4 duration-700 pb-24">
+                    <section className="relative pt-32 pb-12 px-4 md:px-8 max-w-7xl mx-auto flex flex-col items-center text-center">
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-purple-500/15 blur-[120px] rounded-full pointer-events-none" />
+                        <button onClick={onBack} className="absolute top-24 left-4 md:left-8 z-20 flex items-center gap-2 px-4 py-2 bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/10 rounded-xl text-slate-200 transition-colors">
+                            <ChevronLeft size={20} /> Kembali
+                        </button>
+                        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-100 mb-4 mt-12">Semua Aplikasi</h1>
+                        <p className="text-slate-400 text-lg max-w-2xl">Menampilkan seluruh koleksi aplikasi premium dari Dhikzzz Galaxy</p>
+                    </section>
+
+                    <div className="max-w-7xl mx-auto px-4 md:px-8">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+                            {MOCK_APPS.map(app => <AppCard key={app.id} app={app} onClick={onAppSelect} />)}
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        // --- VIEW: HOME ---
+        const HomeView = ({ onAppSelect, searchQuery, setSearchQuery, onShowAll }) => {
             const filteredApps = useMemo(() => {
                 if (!searchQuery) return MOCK_APPS;
                 return MOCK_APPS.filter(app => app.title.toLowerCase().includes(searchQuery.toLowerCase()) || app.category.toLowerCase().includes(searchQuery.toLowerCase()));
@@ -391,8 +415,19 @@ premium: "bg-[#0D1931] text-[#2CB5FF] border border-[#1EA7FF] shadow-[0_0_15px_r
                             {filteredApps.length === 0 ? (
                                 <div className="text-center py-20 bg-white/[0.02] border border-white/[0.05] rounded-3xl"><p className="text-slate-400 text-lg">Tidak ada aplikasi yang ditemukan untuk "{searchQuery}"</p></div>
                             ) : (
-                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
-                                    {filteredApps.map(app => <AppCard key={app.id} app={app} onClick={onAppSelect} />)}
+                                <div>
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+                                        {filteredApps.slice(0, 10).map(app => <AppCard key={app.id} app={app} onClick={onAppSelect} />)}
+                                    </div>
+                                    <div className="mt-10 flex justify-center">
+                                        <button
+                                            onClick={onShowAll}
+                                            className="px-8 py-4 rounded-2xl bg-white/[0.05] border border-white/[0.1] text-slate-300 font-semibold hover:bg-white/[0.1] hover:border-cyan-500/30 hover:text-cyan-400 transition-all flex items-center gap-3 group"
+                                        >
+                                            Tampilkan Semua Aplikasi
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                                        </button>
+                                    </div>
                                 </div>
                             )}
                         </section>
@@ -541,9 +576,21 @@ premium: "bg-[#0D1931] text-[#2CB5FF] border border-[#1EA7FF] shadow-[0_0_15px_r
                         window.scrollTo(0, 0);
                         return;
                     }
-                    if (event.state && event.state.view === 'home') {
-                        setSelectedApp(null);
+                    // Jika sedang di allapps view, tombol back harus kembali ke home
+                    if (currentView === 'allapps') {
+                        event.preventDefault();
                         setCurrentView('home');
+                        window.scrollTo(0, 0);
+                        return;
+                    }
+                    if (event.state && (event.state.view === 'home' || event.state.view === 'allapps')) {
+                        if (event.state.view === 'allapps') {
+                            setSelectedApp(null);
+                            setCurrentView('allapps');
+                        } else {
+                            setSelectedApp(null);
+                            setCurrentView('home');
+                        }
                         window.scrollTo(0, 0);
                     }
                 };
@@ -556,6 +603,12 @@ premium: "bg-[#0D1931] text-[#2CB5FF] border border-[#1EA7FF] shadow-[0_0_15px_r
                 setCurrentView('detail');
                 // Push state ke history agar tombol back HP berfungsi
                 window.history.pushState({ view: 'detail', appId: app.id }, '', '');
+            };
+
+            const navigateToAllApps = () => {
+                setCurrentView('allapps');
+                window.scrollTo(0, 0);
+                window.history.pushState({ view: 'allapps' }, '', '');
             };
 
             const navigateToHome = () => {
@@ -591,7 +644,8 @@ premium: "bg-[#0D1931] text-[#2CB5FF] border border-[#1EA7FF] shadow-[0_0_15px_r
                     </nav>
 
                     <main className="relative z-10">
-                        {currentView === 'home' && <HomeView onAppSelect={navigateToDetail} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />}
+                        {currentView === 'home' && <HomeView onAppSelect={navigateToDetail} searchQuery={searchQuery} setSearchQuery={setSearchQuery} onShowAll={navigateToAllApps} />}
+                        {currentView === 'allapps' && <AllAppsView onAppSelect={navigateToDetail} onBack={navigateToHome} />}
                         {currentView === 'detail' && selectedApp && <AppDetailView app={selectedApp} onBack={navigateToHome} />}
                     </main>
 
