@@ -530,8 +530,33 @@ premium: "bg-[#0D1931] text-[#2CB5FF] border border-[#1EA7FF] shadow-[0_0_15px_r
             const [searchQuery, setSearchQuery] = useState('');
             const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-            const navigateToDetail = (app) => { setSelectedApp(app); setCurrentView('detail'); };
-            const navigateToHome = () => { setSelectedApp(null); setCurrentView('home'); };
+            // Sync React state dengan browser History API untuk tombol back HP
+            useEffect(() => {
+                const handlePopState = (event) => {
+                    if (event.state && event.state.view === 'home') {
+                        setSelectedApp(null);
+                        setCurrentView('home');
+                    }
+                };
+                window.addEventListener('popstate', handlePopState);
+                return () => window.removeEventListener('popstate', handlePopState);
+            }, []);
+
+            const navigateToDetail = (app) => {
+                setSelectedApp(app);
+                setCurrentView('detail');
+                // Push state ke history agar tombol back HP berfungsi
+                window.history.pushState({ view: 'detail', appId: app.id }, '', '');
+            };
+
+            const navigateToHome = () => {
+                setSelectedApp(null);
+                setCurrentView('home');
+                // Kembali ke state sebelumnya di history
+                if (window.history.state && window.history.state.view === 'detail') {
+                    window.history.back();
+                }
+            };
 
             return (
                 <div className="min-h-screen bg-[#05050a] text-slate-200 font-sans selection:bg-cyan-500/30 overflow-x-hidden">
