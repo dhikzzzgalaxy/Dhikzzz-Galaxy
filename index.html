@@ -533,14 +533,23 @@ premium: "bg-[#0D1931] text-[#2CB5FF] border border-[#1EA7FF] shadow-[0_0_15px_r
             // Sync React state dengan browser History API untuk tombol back HP
             useEffect(() => {
                 const handlePopState = (event) => {
+                    // Jika sedang di detail view, tombol back harus kembali ke home
+                    if (currentView === 'detail') {
+                        event.preventDefault();
+                        setSelectedApp(null);
+                        setCurrentView('home');
+                        window.scrollTo(0, 0);
+                        return;
+                    }
                     if (event.state && event.state.view === 'home') {
                         setSelectedApp(null);
                         setCurrentView('home');
+                        window.scrollTo(0, 0);
                     }
                 };
                 window.addEventListener('popstate', handlePopState);
                 return () => window.removeEventListener('popstate', handlePopState);
-            }, []);
+            }, [currentView]);
 
             const navigateToDetail = (app) => {
                 setSelectedApp(app);
@@ -552,6 +561,7 @@ premium: "bg-[#0D1931] text-[#2CB5FF] border border-[#1EA7FF] shadow-[0_0_15px_r
             const navigateToHome = () => {
                 setSelectedApp(null);
                 setCurrentView('home');
+                window.scrollTo(0, 0);
                 // Kembali ke state sebelumnya di history
                 if (window.history.state && window.history.state.view === 'detail') {
                     window.history.back();
