@@ -337,13 +337,13 @@
         ];
 
         // --- COMPONENTS ---
-        const Badge = ({ children, variant = 'primary' }) => {
+        const Badge = ({ children, variant = "primary" }) => {
             const styles = {
                 primary: "bg-cyan-500/10 text-cyan-400 border-cyan-500/20",
-premium: "bg-[#0D1931] text-[#2CB5FF] border border-[#1EA7FF] shadow-[0_0_15px_rgba(30,167,255,0.25)]",
+                premium: "bg-purple-500/10 text-purple-400 border-purple-500/20",
                 success: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20"
             };
-            return <span className={`px-2 py-1 text-[10px] font-bold uppercase tracking-wider rounded-md border ${styles[variant]} backdrop-blur-sm`}>{children}</span>;
+            return <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase border ${styles[variant]}`}>{children}</span>;
         };
 
         const AppCard = ({ app, onClick }) => (
@@ -366,6 +366,28 @@ premium: "bg-[#0D1931] text-[#2CB5FF] border border-[#1EA7FF] shadow-[0_0_15px_r
             </div>
         );
 
+        // Komponen Baru untuk Section Terbaru (Horizontal Scroll)
+        const RecentAppCard = ({ app, onClick }) => (
+            <div onClick={() => onClick(app)} className="group flex-none w-64 relative bg-white/[0.02] border border-white/[0.05] hover:border-purple-500/40 rounded-2xl p-4 cursor-pointer transition-all duration-500 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative z-10">
+                    <div className="relative w-full aspect-square rounded-xl overflow-hidden mb-4 group-hover:scale-105 transition-transform duration-500 shadow-lg border border-white/5">
+                        <img src={app.icon} alt={app.title} className="w-full h-full object-cover" />
+                        {app.isPremium && <div className="absolute top-2 right-2"><Badge variant="premium">Premium</Badge></div>}
+                    </div>
+                    <h3 className="font-bold text-slate-100 truncate group-hover:text-purple-400 transition-colors">{app.title}</h3>
+                    <p className="text-xs text-slate-400 truncate mt-1">{app.category}</p>
+                    <div className="flex items-center justify-between mt-3">
+                        <div className="flex items-center gap-2 text-xs text-slate-300">
+                            <Star size={12} className="text-yellow-400 fill-yellow-400" />
+                            <span>{app.rating}</span>
+                        </div>
+                        <span className="text-[10px] px-2 py-0.5 rounded-md bg-white/5 text-slate-400 border border-white/10">ID: {app.id}</span>
+                    </div>
+                </div>
+            </div>
+        );
+
         // --- VIEWS ---
         // --- VIEW: TAMPILAN SEMUA APLIKASI ---
         const AllAppsView = ({ onAppSelect, onBack }) => {
@@ -378,8 +400,8 @@ premium: "bg-[#0D1931] text-[#2CB5FF] border border-[#1EA7FF] shadow-[0_0_15px_r
                         <button onClick={onBack} className="absolute top-24 left-4 md:left-8 z-20 flex items-center gap-2 px-4 py-2 bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/10 rounded-xl text-slate-200 transition-colors">
                             <ChevronLeft size={20} /> Kembali
                         </button>
-                        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-100 mb-4 mt-12">Semua Aplikasi</h1>
-                        <p className="text-slate-400 text-lg max-w-2xl">Menampilkan seluruh koleksi aplikasi premium dari Dhikzzz Galaxy</p>
+                        <h1 className="text-4xl font-bold text-slate-100 mb-4 mt-8">Semua Aplikasi</h1>
+                        <p className="text-slate-400">Jelajahi seluruh koleksi aplikasi mod terbaik kami.</p>
                     </section>
 
                     <div className="max-w-7xl mx-auto px-4 md:px-8">
@@ -391,13 +413,20 @@ premium: "bg-[#0D1931] text-[#2CB5FF] border border-[#1EA7FF] shadow-[0_0_15px_r
             );
         };
 
-        // --- VIEW: HOME ---
         const HomeView = ({ onAppSelect, searchQuery, setSearchQuery, onShowAll }) => {
             const filteredApps = useMemo(() => {
                 if (!searchQuery) return MOCK_APPS;
                 return MOCK_APPS.filter(app => app.title.toLowerCase().includes(searchQuery.toLowerCase()) || app.category.toLowerCase().includes(searchQuery.toLowerCase()));
             }, [searchQuery]);
+
             const trendingApps = filteredApps.filter(a => a.isTrending);
+
+            // Mendapatkan 10 aplikasi terbaru berdasarkan ID terbesar dari data asli
+            const recentApps = useMemo(() => {
+                return [...MOCK_APPS]
+                    .sort((a, b) => parseInt(b.id) - parseInt(a.id))
+                    .slice(0, 10);
+            }, []);
 
             return (
                 <div className="fade-in slide-in-from-bottom-4 duration-700 pb-24">
@@ -442,6 +471,22 @@ premium: "bg-[#0D1931] text-[#2CB5FF] border border-[#1EA7FF] shadow-[0_0_15px_r
                                 ))}
                             </div>
                         </section>
+
+                        {/* SECTION TERBARU (HORIZONTAL SCROLL) */}
+                        {!searchQuery && (
+                            <section>
+                                <div className="flex items-center justify-between mb-6">
+                                    <h2 className="text-2xl font-bold text-slate-100 flex items-center gap-2">✨ Terbaru (New Updates)</h2>
+                                </div>
+                                <div className="flex gap-4 md:gap-6 overflow-x-auto pb-6 scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0 snap-x">
+                                    {recentApps.map(app => (
+                                        <div key={app.id} className="snap-start">
+                                            <RecentAppCard app={app} onClick={onAppSelect} />
+                                        </div>
+                                    ))}
+                                </div>
+                            </section>
+                        )}
 
                         {trendingApps.length > 0 && (
                             <section>
@@ -676,7 +721,7 @@ premium: "bg-[#0D1931] text-[#2CB5FF] border border-[#1EA7FF] shadow-[0_0_15px_r
                                 <div className="flex items-center gap-3 cursor-pointer group" onClick={navigateToHome}>
                                     {/* Menerapkan Logo Baru di Navbar */}
                                     <div className="w-11 h-11 rounded-xl overflow-hidden shadow-[0_0_15px_rgba(0,243,255,0.2)] group-hover:shadow-[0_0_25px_rgba(188,19,254,0.4)] transition-all duration-300 bg-white flex items-center justify-center border border-white/20">
-                                        <img src="https://raw.githubusercontent.com/dhikzzzgalaxy/Dhikzzz-Galaxy/main/Logo_Dhikzzz_Galaxy.png" alt="Dhikzzz Galaxy Logo" className="w-full h-full object-contain p-1" />
+                                        <img src="https://raw.githubusercontent.com/dhikzzzgalaxy/Dhikzzz-Galaxy/main/Logo_Dhikzzz_Galaxy.png" alt="Dhikzzz Galaxy" className="w-full h-full object-contain p-1" />
                                     </div>
                                     <span className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-slate-100 to-slate-400 group-hover:text-white transition-colors">Dhikzzz Galaxy</span>
                                 </div>
@@ -696,7 +741,7 @@ premium: "bg-[#0D1931] text-[#2CB5FF] border border-[#1EA7FF] shadow-[0_0_15px_r
                             <div className="flex items-center gap-3">
                                 {/* Menerapkan Logo Baru di Footer */}
                                 <div className="w-8 h-8 rounded-lg overflow-hidden bg-white flex items-center justify-center opacity-90 border border-white/20">
-                                    <img src="https://raw.githubusercontent.com/dhikzzzgalaxy/Dhikzzz-Galaxy/main/Logo_Dhikzzz_Galaxy.png" alt="Dhikzzz Galaxy Logo" className="w-full h-full object-contain p-0.5" />
+                                    <img src="https://raw.githubusercontent.com/dhikzzzgalaxy/Dhikzzz-Galaxy/main/Logo_Dhikzzz_Galaxy.png" alt="Dhikzzz Galaxy" className="w-full h-full object-contain p-0.5" />
                                 </div>
                                 <span className="font-bold text-slate-300">Dhikzzz Galaxy</span>
                             </div>
