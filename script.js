@@ -99,7 +99,69 @@ const MATERIAL_CATEGORIES = [
 ];
 
 const MOCK_APPS = [
-
+            {
+                id: '61', title: 'Lightroom', developer: 'Adobe', version: '11.3.2', size: '146,26 MB', rating: 4.8, downloads: '100jt+',
+                androidMin: 'Android 8.0+', updatedAt: '22 Juli 2026', category: 'Editing', isPremium: true, isTrending: false,
+                icon: "https://raw.githubusercontent.com/dhikzzzgalaxy/Dhikzzz-Galaxy/main/Logo/Lightroom.jpg",
+                banner: "https://raw.githubusercontent.com/dhikzzzgalaxy/Dhikzzz-Galaxy/main/Logo/Lightroom.jpg",
+                description: 'Lightroom adalah editor foto dan video profesional yang memanfaatkan teknologi AI untuk memudahkan pengeditan dengan hasil berkualitas tinggi. Aplikasi ini menawarkan berbagai fitur seperti preset siap pakai, penghapus objek berbasis AI, peningkatan cahaya dan warna, pengaturan eksposur, kontras, saturasi, gradasi warna, serta pengeditan batch untuk menerapkan perubahan ke banyak foto sekaligus. Selain itu, Lightroom menyediakan alat edit video, inspirasi dari komunitas melalui preset kreatif, dan antarmuka yang mudah digunakan, sehingga cocok bagi pemula maupun fotografer profesional yang ingin menghasilkan foto dan video dengan tampilan yang lebih menarik dan estetis.',
+                features: ['Premium Features Unlocked'],
+                mirrors: [{ name: 'Versi 11.3.2', url: 'https://www.mediafire.com/file/d03li5bet5h92r6/Lightroom_11.3.2_%2528711103200%2529_Release_Dhikzzz_Galaxy.apk/file', size: '146,26 MB' }]
+            },
+            {
+                id: '60', title: 'Lucky Dramas', developer: 'AID Japan Co., Ltd', version: '1.7.1', size: '49,73 MB', rating: 4.3, downloads: '10jt+',
+                androidMin: 'Android 8.0+', updatedAt: '22 Juli 2026', category: 'Editing', isPremium: true, isTrending: false,
+                icon: "https://raw.githubusercontent.com/dhikzzzgalaxy/Dhikzzz-Galaxy/main/Logo/Lucky-Dramas.jpg",
+                banner: "https://raw.githubusercontent.com/dhikzzzgalaxy/Dhikzzz-Galaxy/main/Logo/Lucky-Dramas.jpg",
+                description: 'Lucky Dramas menghadirkan hiburan drama pendek yang seru sekaligus memberikan kesempatan untuk mengumpulkan hadiah melalui berbagai aktivitas di dalam aplikasi. Nikmati drama populer dengan pembaruan episode terbaru setiap hari, selesaikan misi harian untuk memperoleh koin, dan tukarkan hadiah sesuai ketentuan yang berlaku. Dengan pengalaman menonton yang lancar, antarmuka yang mudah digunakan, serta dukungan penarikan ke dompet digital lokal yang tersedia, Lucky Dramas menjadi pilihan menarik bagi Anda yang ingin menikmati drama favorit sambil mengikuti berbagai program hadiah dalam aplikasi.',
+                features: ['Premium Features Unlocked'],
+                mirrors: [{ name: 'Versi 1.7.1', url: 'https://www.mediafire.com/file/oshsyktikg41x0g/Lucky_Dramas_1.7.1_%252856%2529_Release_Dhikzzz_Galaxy.apk/file', size: '49,73 MB' }]
+            },
+            {
+                id: '59', title: 'Hypic', developer: 'Bytedance Pte. Ltd.', version: '8.7.0', size: '352,90 MB', rating: 3.5, downloads: '100jt+',
+                androidMin: 'Android 6.0+', updatedAt: '22 Juli 2026', category: 'Editing', isPremium: true, isTrending: false,
+                icon: "https://raw.githubusercontent.com/dhikzzzgalaxy/Dhikzzz-Galaxy/main/Logo/Hypic.jpg",
+                banner: "https://raw.githubusercontent.com/dhikzzzgalaxy/Dhikzzz-Galaxy/main/Logo/Hypic.jpg",
+                description: 'Hypic adalah editor foto berbasis AI yang memudahkan Anda menciptakan hasil edit berkualitas profesional hanya dalam beberapa sentuhan. Aplikasi ini menawarkan fitur AI canggih seperti penghapus latar belakang, peningkatan kualitas gambar, pembuatan avatar dan efek kartun, serta berbagai filter dan efek estetis yang sedang tren. Dilengkapi alat retouch wajah yang natural, template siap pakai, kolase, pengeditan batch, dan pembuatan karya seni AI, Hypic cocok untuk mempercantik foto selfie, konten media sosial, maupun proyek kreatif. Dengan antarmuka yang sederhana dan proses edit yang cepat, Hypic membantu Anda menghasilkan foto yang menarik untuk Instagram, TikTok, Pinterest, dan platform lainnya.',
+                features: ['Premium Features Unlocked'],
+                mirrors: [{ name: 'Versi 8.7.0', url: 'https://www.mediafire.com/file/xicaakkodok64ge/Hypic_8.7.0_%252887080%2529_Release_Dhikzzz_Galaxy.apk/file', size: '352,90 MB' }]
+            },
+            {
+                id: '58', title: 'Lark Player', developer: 'Lark Player Studio – Music, MP3 & Video Player', version: '6.33.5', size: '23,80 MB', rating: 4.6, downloads: '500jt+',
+                androidMin: 'Android 5.0+', updatedAt: '22 Juli 2026', category: 'Music', isPremium: true, isTrending: false,
+                icon: "https://raw.githubusercontent.com/dhikzzzgalaxy/Dhikzzz-Galaxy/main/Logo/Lark-Player.jpg",
+                banner: "https://raw.githubusercontent.com/dhikzzzgalaxy/Dhikzzz-Galaxy/main/Logo/Lark-Player.jpg",
+                description: 'Lark Player adalah aplikasi pemutar audio offline yang mendukung berbagai format musik dan video dengan kualitas suara tinggi serta antarmuka yang modern dan mudah digunakan. Dilengkapi equalizer dengan berbagai preset, peningkatan bass, lirik tersinkronisasi, pengelola playlist, pengedit metadata lagu, pemotong audio untuk nada dering, hingga tema yang dapat disesuaikan, aplikasi ini memberikan pengalaman mendengarkan musik yang lebih nyaman. Selain itu, tersedia pemutar video bawaan, timer tidur, mode hemat daya, widget, kontrol layar kunci, serta dukungan mode terang dan gelap, menjadikannya pilihan ideal untuk menikmati koleksi musik lokal kapan saja tanpa koneksi internet.',
+                features: ['Premium Features Unlocked'],
+                mirrors: [{ name: 'Versi 6.33.5', url: 'https://www.mediafire.com/file/5c6ynu5r7nydqaa/Lark_Player_6.33.5_%252826330509%2529_Dhikzzz_Galaxy.apk/file', size: '23,80 MB' }]
+            },
+            {
+                id: '57', title: 'iFake', developer: 'TNVApps', version: '20.2.0', size: '71,01 MB', rating: 4.7, downloads: '5jt+',
+                androidMin: 'Android 8.0+', updatedAt: '22 Juli 2026', category: 'Launcher', isPremium: true, isTrending: false,
+                icon: "https://raw.githubusercontent.com/dhikzzzgalaxy/Dhikzzz-Galaxy/main/Logo/iLauncher.jpg",
+                banner: "https://raw.githubusercontent.com/dhikzzzgalaxy/Dhikzzz-Galaxy/main/Logo/iLauncher.jpg",
+                description: 'iFake adalah aplikasi hiburan yang memungkinkan Anda membuat tampilan obrolan dan notifikasi palsu dengan desain yang menyerupai berbagai aplikasi perpesanan populer seperti WhatsApp, iMessage, Telegram, Messenger, Instagram, Twitter, Snapchat, LINE, dan lainnya. Aplikasi ini menyediakan berbagai fitur kustomisasi, termasuk obrolan grup, emoji bergaya iOS, mode gelap, ikon terverifikasi, status WhatsApp, notifikasi layar kunci ala iPhone, serta penyimpanan proyek untuk digunakan kembali. Dengan antarmuka yang mudah digunakan dan hasil yang realistis, iFake cocok untuk membuat konten kreatif atau lelucon ringan bersama teman, dan ditujukan hanya untuk tujuan hiburan.',
+                features: ['Premium Features Unlocked'],
+                mirrors: [{ name: 'Versi 20.2.0', url: 'https://www.mediafire.com/file/h301f8b4nsun2gf/iFake_20.2.0_%2528332%2529_Release_Dhikzzz_Galaxy.apk/file', size: '71,01 MB' }]
+            },
+            {
+                id: '56', title: 'Lyra', developer: 'Lyra Music', version: '1.3.8', size: '82,35 MB', rating: 4.4, downloads: '500rb+',
+                androidMin: 'Android 7.0+', updatedAt: '22 Juli 2026', category: 'Music', isPremium: true, isTrending: false,
+                icon: "https://raw.githubusercontent.com/dhikzzzgalaxy/Dhikzzz-Galaxy/main/Logo/Lyra.jpg",
+                banner: "https://raw.githubusercontent.com/dhikzzzgalaxy/Dhikzzz-Galaxy/main/Logo/Lyra.jpg",
+                description: 'Lyra adalah aplikasi pemutar musik lengkap yang memungkinkan Anda menikmati jutaan lagu, podcast, dan radio langsung secara gratis dalam satu aplikasi. Dengarkan musik favorit tanpa batas shuffle, putar lagu di latar belakang, impor koleksi musik untuk diputar secara offline, serta buat playlist pribadi sesuai selera. Dilengkapi lirik tersinkronisasi, equalizer, mode gelap dan terang, serta koleksi lagu dari berbagai genre seperti pop, dangdut, K-pop, rock, hip-hop, hingga lo-fi, Lyra menghadirkan pengalaman mendengarkan yang praktis, nyaman, dan dapat dinikmati kapan saja tanpa perlu membuat akun atau berlangganan.',
+                features: ['Premium Features Unlocked'],
+                mirrors: [{ name: 'Versi 1.3.8', url: 'https://www.mediafire.com/file/iw5f0alqybtablu/Lyra_1.3.8_%252846%2529_Release_Dhikzzz_Galaxy oy.apk/file', size: '82,35 MB' }]
+            },
+            {
+               id: '55', title: 'LightX', developer: 'AndOr Communications Pvt Ltd', version: '2.4.7', size: '104,15 MB', rating: 4.5, downloads: '50jt+',
+                androidMin: 'Android 8.0+', updatedAt: '22 Juli 2026', category: 'Editing', isPremium: true, isTrending: false,
+                icon: "https://raw.githubusercontent.com/dhikzzzgalaxy/Dhikzzz-Galaxy/main/Logo/LightX.jpg",
+                banner: "https://raw.githubusercontent.com/dhikzzzgalaxy/Dhikzzz-Galaxy/main/Logo/LightX.jpg",
+                description: 'LightX adalah editor foto lengkap yang menghadirkan berbagai alat profesional untuk membuat hasil edit lebih kreatif dan menarik. Aplikasi ini memungkinkan Anda menghapus latar belakang, membuat efek color splash, menggabungkan foto dengan eksposur ganda, mempercantik selfie, mengubah bentuk wajah dan tubuh, serta menambahkan filter vintage, retro, drama, dan glow. Selain itu, LightX dilengkapi fitur kolase, bingkai foto, stiker, teks, doodle, efek blur, pengaturan warna tingkat lanjut, hingga alat manipulasi perspektif untuk menghasilkan foto berkualitas tinggi. Dengan antarmuka yang mudah digunakan, LightX menjadi pilihan ideal untuk mengedit foto sehari-hari maupun membuat karya visual yang unik dan profesional.',
+                features: ['Premium Features Unlocked'],
+                mirrors: [{ name: 'Versi 2.4.7', url: 'https://www.mediafire.com/file/6we7t4nnlfuappt/LightX_2.4.7_%2528523%2529_Release_Dhikzzz_Galaxy.apk/file', size: '104,15 MB' }]
+            },
             {
                 id: '54', title: 'Koloro', developer: 'cerdillac', version: '6.2.8', size: '59,91 MB', rating: 4.9, downloads: '10jt+',
                 androidMin: 'Android 5.0+', updatedAt: '22 Juli 2026', category: 'Editing', isPremium: true, isTrending: false,
