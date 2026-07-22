@@ -110,7 +110,7 @@ const MOCK_APPS = [
             },
             {
                 id: '60', title: 'Lucky Dramas', developer: 'AID Japan Co., Ltd', version: '1.7.1', size: '49,73 MB', rating: 4.3, downloads: '10jt+',
-                androidMin: 'Android 8.0+', updatedAt: '22 Juli 2026', category: 'Editing', isPremium: true, isTrending: false,
+                androidMin: 'Android 8.0+', updatedAt: '22 Juli 2026', category: 'Entertainment', isPremium: true, isTrending: false,
                 icon: "https://raw.githubusercontent.com/dhikzzzgalaxy/Dhikzzz-Galaxy/main/Logo/Lucky-Dramas.jpg",
                 banner: "https://raw.githubusercontent.com/dhikzzzgalaxy/Dhikzzz-Galaxy/main/Logo/Lucky-Dramas.jpg",
                 description: 'Lucky Dramas menghadirkan hiburan drama pendek yang seru sekaligus memberikan kesempatan untuk mengumpulkan hadiah melalui berbagai aktivitas di dalam aplikasi. Nikmati drama populer dengan pembaruan episode terbaru setiap hari, selesaikan misi harian untuk memperoleh koin, dan tukarkan hadiah sesuai ketentuan yang berlaku. Dengan pengalaman menonton yang lancar, antarmuka yang mudah digunakan, serta dukungan penarikan ke dompet digital lokal yang tersedia, Lucky Dramas menjadi pilihan menarik bagi Anda yang ingin menikmati drama favorit sambil mengikuti berbagai program hadiah dalam aplikasi.',
