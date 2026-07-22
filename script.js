@@ -98,7 +98,71 @@ const MATERIAL_CATEGORIES = [
     { name: "Games", id: "Games", icon: "Gamepad2" }
 ];
 
-const MOCK_APPS = [        
+const MOCK_APPS = [
+
+            {
+                id: '54', title: 'Koloro', developer: 'cerdillac', version: '6.2.8', size: '59,91 MB', rating: 4.9, downloads: '10jt+',
+                androidMin: 'Android 5.0+', updatedAt: '22 Juli 2026', category: 'Editing', isPremium: true, isTrending: false,
+                icon: "https://raw.githubusercontent.com/dhikzzzgalaxy/Dhikzzz-Galaxy/main/Logo/Koloro.jpg",
+                banner: "https://raw.githubusercontent.com/dhikzzzgalaxy/Dhikzzz-Galaxy/main/Logo/Koloro.jpg",
+                description: 'Koloro adalah editor foto dan video dengan lebih dari 1.000 preset serta filter analog yang dirancang untuk menciptakan tampilan vintage, sinematik, dan estetis dalam sekali sentuh. Aplikasi ini menyediakan berbagai efek seperti kebocoran cahaya, grain, debu film, goresan, bokeh, refleksi lensa, hingga nuansa kamera retro 1998, lengkap dengan alat pengeditan profesional seperti HSL, kontras, eksposur, white balance, perspektif, dan pemotongan. Anda juga dapat membuat preset sendiri, menyimpannya, lalu membagikannya ke berbagai media sosial. Cocok untuk mengedit foto perjalanan, potret, makanan, pemandangan, hingga konten bergaya Instagram dengan hasil yang kreatif dan berkualitas tinggi.',
+                features: ['Premium Features Unlocked'],
+                mirrors: [{ name: 'Versi 6.2.8', url: 'https://www.mediafire.com/file/baqndp1vapd8d4p/Koloro_6.2.8_%2528227%2529_Release_Dhikzzz_Galaxy.apk/file', size: '59,91 MB' }]
+            },
+            {
+                id: '53', title: 'KineMaster', developer: 'Maxsortube', version: '8.1.5.36356.GP', size: '111,20 MB', rating: 4.6, downloads: '500jt+',
+                androidMin: 'Android 8.0+', updatedAt: '22 Juli 2026', category: 'Editing', isPremium: true, isTrending: false,
+                icon: "https://raw.githubusercontent.com/dhikzzzgalaxy/Dhikzzz-Galaxy/main/Logo/KineMaster.jpg",
+                banner: "https://raw.githubusercontent.com/dhikzzzgalaxy/Dhikzzz-Galaxy/main/Logo/KineMaster.jpg",
+                description: 'KineMaster adalah editor video lengkap yang memadukan alat profesional dengan teknologi AI untuk memudahkan pembuatan konten berkualitas tinggi. Aplikasi ini menyediakan fitur seperti AI Auto Captions, Text-to-Speech, penghapus latar belakang, penghilang noise, pelacakan objek, peningkatan resolusi, hingga efek artistik berbasis AI. Selain itu, KineMaster menawarkan animasi keyframe, green screen (Chroma Key), kontrol kecepatan, ribuan template siap pakai, serta koleksi efek, transisi, musik, stiker, dan font dari Asset Store. Dengan dukungan ekspor hingga 4K 60 FPS, banyak lapisan, penyimpanan cloud, dan alat editing yang presisi, KineMaster menjadi pilihan ideal untuk membuat vlog, film, Shorts, Reels, dan berbagai konten media sosial dengan mudah dan profesional.',
+                features: ['Premium Features Unlocked'],
+                mirrors: [{ name: 'Versi 8.1.5.36356.GP', url: 'https://www.mediafire.com/file/m9cdfv6dmhf5vxu/KineMaster_8.1.5.36356.GP_%252836356%2529_Release_Dhikzzz_Galaxy.apk/file', size: '111,20 MB' }]
+            },
+            {
+                id: '52', title: 'InShot', developer: 'InShot Video Editor', version: '2.145.1500', size: '83,79 MB', rating: 4.9, downloads: '500jt+',
+                androidMin: 'Android 7.0+', updatedAt: '22 Juli 2026', category: 'Editing', isPremium: true, isTrending: false,
+                icon: "https://raw.githubusercontent.com/dhikzzzgalaxy/Dhikzzz-Galaxy/main/Logo/InShot.jpg",
+                banner: "https://raw.githubusercontent.com/dhikzzzgalaxy/Dhikzzz-Galaxy/main/Logo/InShot.jpg",
+                description: 'InShot adalah editor video dan foto serbaguna yang memudahkan Anda membuat konten kreatif dengan hasil berkualitas tinggi. Dilengkapi fitur AI seperti stabilisasi video, subtitle otomatis, peningkatan kualitas HD, text-to-speech, dan efek tubuh AI, InShot juga menawarkan alat pengeditan lengkap seperti pemotongan, penggabungan video, kontrol kecepatan, slideshow, transisi sinematik, efek glitch, filter bergaya film, musik, stiker, teks animasi, hingga fitur Picture-in-Picture dan green screen. Dengan dukungan ekspor hingga 4K serta berbagai rasio aspek untuk YouTube, TikTok, Instagram, Facebook, dan platform lainnya, InShot menjadi pilihan ideal untuk membuat vlog, video pendek, dan konten media sosial dengan mudah dan profesional.',
+                features: ['Premium Features Unlocked'],
+                mirrors: [{ name: 'Versi 2.145.1500', url: 'https://www.mediafire.com/file/ab6bxg7wqkrggvt/InShot_2.145.1500_%25281500%2529_Release_Dhikzzz_Galaxy.apk/file', size: '83,79 MB' }]
+            },
+            {
+                id: '51', title: 'InSaver', developer: 'Video Downloader Story Saver', version: '3.20.1', size: '36,64 MB', rating: 4.4, downloads: '10jt+',
+                androidMin: 'Android 7.0+', updatedAt: '22 Juli 2026', category: 'Downloader', isPremium: true, isTrending: false,
+                icon: "https://raw.githubusercontent.com/dhikzzzgalaxy/Dhikzzz-Galaxy/main/Logo/InSaver.jpg",
+                banner: "https://raw.githubusercontent.com/dhikzzzgalaxy/Dhikzzz-Galaxy/main/Logo/InSaver.jpg",
+                description: 'InSaver adalah aplikasi praktis untuk mengunduh video, foto, cerita, dan musik dari berbagai platform media sosial dengan cepat dan mudah. Tanpa perlu login, Anda dapat menyimpan konten berkualitas tinggi untuk ditonton secara offline, mengunduh beberapa file sekaligus, serta mengelola hasil unduhan dalam satu tempat. Dengan antarmuka yang sederhana, proses unduh yang cepat, dukungan berbagai format, dan perlindungan privasi pengguna, aplikasi ini menjadi solusi lengkap untuk menyimpan serta mengelola konten favorit Anda dengan aman dan nyaman.',
+                features: ['Premium Features Unlocked'],
+                mirrors: [{ name: 'Versi 3.20.1', url: 'https://www.mediafire.com/file/lc632ix300mpoe7/InSaver_3.20.1_%252830798%2529_Dhikzzz_Galaxy.apk/file', size: '36,64 MB' }]
+            },
+            {
+                id: '50', title: 'iLauncher', developer: 'BlueSkySoft', version: '2.1.6', size: '30,17 MB', rating: 4.4, downloads: '5jt+',
+                androidMin: 'Android 7.0+', updatedAt: '22 Juli 2026', category: 'Launcher', isPremium: true, isTrending: false,
+                icon: "https://raw.githubusercontent.com/dhikzzzgalaxy/Dhikzzz-Galaxy/main/Logo/iLauncher.jpg",
+                banner: "https://raw.githubusercontent.com/dhikzzzgalaxy/Dhikzzz-Galaxy/main/Logo/iLauncher.jpg",
+                description: 'iLauncher adalah launcher Android yang menghadirkan tampilan modern dan elegan dengan berbagai pilihan tema, widget, wallpaper, serta fitur pengubah ikon untuk mempersonalisasi ponsel sesuai gaya Anda. Aplikasi ini memungkinkan Anda membuat widget kustom seperti jam, kalender, cuaca, baterai, foto, dan kontak, menyembunyikan aplikasi, mengatur layar kunci dengan PIN atau pola, serta menyesuaikan tata letak layar utama, folder, dan bilah pencarian. Dilengkapi Quick Bar untuk akses cepat ke aplikasi yang sering digunakan serta berbagai opsi kustomisasi lainnya, iLauncher memberikan pengalaman penggunaan yang lebih praktis, rapi, dan estetis.',
+                features: ['Premium Features Unlocked'],
+                mirrors: [{ name: 'Versi 2.1.6', url: 'https://www.mediafire.com/file/5hazwjs8ni758pu/iLauncher_2.1.6_%252885%2529_Release_Dhikzzz_Galaxy.apk/file', size: '30,17 MB' }]
+            },
+            {
+        l: '49', title: 'Light Cone Music', developer: '川陀的程序员', version: 'v1.1.4', size: '13,17 MB', rating: 4.4, downloads: '10rb+',
+                androidMin: 'Android 8.0+', updatedAt: '22 Juli 2026', category: 'Music', isPremium: true, isTrending: false,
+                icon: "https://raw.githubusercontent.com/dhikzzzgalaxy/Dhikzzz-Galaxy/main/Logo/Light-Cone-Music.jpg",
+                banner: "https://raw.githubusercontent.com/dhikzzzgalaxy/Dhikzzz-Galaxy/main/Logo/Light-Cone-Music.jpg",
+                description: 'Light Cone Music adalah pemutar musik lokal modern yang bebas iklan dan tanpa pelacakan, dirancang untuk memberikan pengalaman mendengarkan musik yang cepat, aman, dan efisien. Aplikasi ini mendukung berbagai format audio populer seperti MP3, FLAC, WAV, AAC, dan M4A, lengkap dengan pembacaan metadata, ReplayGain, kontrol pemutaran lanjutan, serta melanjutkan musik secara otomatis saat headphone atau Bluetooth kendaraan terhubung. Media3 juga menghadirkan dukungan lirik yang lengkap, visualisasi audio yang menarik, tampilan antarmuka yang dapat dikustomisasi, sinkronisasi data melalui WebDAV, pencadangan lokal, asisten AI untuk informasi musik, statistik kebiasaan mendengarkan, hingga suara alam berkualitas tinggi untuk belajar atau bersantai. Dengan desain yang bersih, ringan, dan mengutamakan privasi, Media3 menjadi pilihan ideal bagi pecinta musik lokal di Android.',
+                features: ['Premium Features Unlocked'],
+                mirrors: [{ name: 'Versi v1.1.4', url: 'https://www.mediafire.com/file/1r1wyielwwemdbg/Light_Cone_Music_v1.1.4%25283aa55c07%2529_%2528133%2529_Release_Dhikzzz_Galaxy.apk/file', size: '13,17 MB' }]
+            },
+            {
+                id: '48', title: 'Libre Tube', developer: 'Bnyro', version: '0.30.0', size: '11,37 MB', rating: 4.9, downloads: '1jt+',
+                androidMin: 'Android 8.0+', updatedAt: '22 Juli 2026', category: 'Entertainment', isPremium: true, isTrending: false,
+                icon: "https://raw.githubusercontent.com/dhikzzzgalaxy/Dhikzzz-Galaxy/main/Logo/Libre-Tube.jpg",
+                banner: "https://raw.githubusercontent.com/dhikzzzgalaxy/Dhikzzz-Galaxy/main/Logo/Libre-Tube.jpg",
+                description: 'LibreTube adalah aplikasi pemutar YouTube sumber terbuka yang berfokus pada privasi dan kebebasan pengguna. Aplikasi ini memungkinkan pengguna menonton video, mendengarkan musik, berlangganan kanal, serta memutar konten tanpa iklan dan tanpa pelacakan melalui layanan alternatif Invidious. LibreTube memiliki tampilan sederhana, mendukung pemutaran latar belakang, unduhan, pemutaran video berkualitas tinggi, serta berbagai fitur penyesuaian untuk pengalaman menonton yang lebih ringan dan bebas gangguan.',
+                features: ['Premium Features Unlocked'],
+                mirrors: [{ name: 'Versi 0.30.0', url: 'https://www.mediafire.com/file/bdbznkrxe1se5gg/LibreTube_0.30.0_%252865%2529_Release_Dhikzzz_Galaxy.apk/file', size: '11,37 MB' }]
+            },        
             {
                 id: '47', title: 'HotMiniDrama', developer: 'Tasawq', version: '2.2.1', size: '51,14 MB', rating: 4.6, downloads: '10jt+',
                 androidMin: 'Android 7.0+', updatedAt: '22 Juli 2026', category: 'Entertainment', isPremium: true, isTrending: false,
