@@ -184,8 +184,8 @@
             { name: "Games", id: "Games", icon: "Gamepad2" }
         ];
 
-        const MOCK_APPS = [        
-                        {
+        const MOCK_APPS = [       
+            {
                 id: '61', title: 'Lightroom', developer: 'Adobe', version: '11.3.2', size: '146,26 MB', rating: 4.8, downloads: '100jt+',
                 androidMin: 'Android 8.0+', updatedAt: '22 Juli 2026', category: 'Editing', isPremium: true, isTrending: false,
                 icon: "https://raw.githubusercontent.com/dhikzzzgalaxy/Dhikzzz-Galaxy/main/Logo/Lightroom.jpg",
@@ -744,7 +744,7 @@
             return <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase border ${styles[variant]}`}>{children}</span>;
         };
 
-        const AppCard = ({ app, onClick }) => (
+        const AppCard = ({ app, onClick, onDeveloperClick }) => (
             <div onClick={() => onClick(app)} className="group relative bg-white/[0.02] border border-white/[0.05] hover:border-cyan-500/40 rounded-2xl p-4 cursor-pointer transition-all duration-500 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 {app.isPremium && <div className="absolute top-3 right-3 z-10"><Badge variant="premium">Premium</Badge></div>}
@@ -754,7 +754,15 @@
                     </div>
                     <div className="flex-1 min-w-0">
                         <h3 className="font-bold text-slate-100 truncate group-hover:text-cyan-400 transition-colors">{app.title}</h3>
-                        <p className="text-xs text-slate-400 truncate mt-0.5">{app.developer}</p>
+                        <p 
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                if (onDeveloperClick) onDeveloperClick(app.developer);
+                            }}
+                            className="text-xs text-slate-400 truncate mt-0.5 hover:text-cyan-400 transition-colors cursor-pointer inline-block"
+                        >
+                            {app.developer}
+                        </p>
                         <div className="flex items-center gap-3 mt-3 text-xs text-slate-300">
                             <span className="flex items-center gap-1"><Star size={12} className="text-yellow-400 fill-yellow-400" /> {app.rating}</span>
                             <span className="flex items-center gap-1"><Download size={12} className="text-cyan-400" /> {app.size}</span>
@@ -790,7 +798,7 @@
 
 
         // --- VIEW: TAMPILAN SEMUA APLIKASI ---
-        const AllAppsView = ({ onAppSelect, onBack }) => {
+        const AllAppsView = ({ onAppSelect, onBack, onDeveloperClick }) => {
             const [selectedCategory, setSelectedCategory] = useState("All");
             useEffect(() => { window.scrollTo(0, 0); }, []);
 
@@ -833,7 +841,7 @@
                             </div>
                         ) : (
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
-                                {filteredAllApps.map(app => <AppCard key={app.id} app={app} onClick={onAppSelect} />)}
+                                {filteredAllApps.map(app => <AppCard key={app.id} app={app} onClick={onAppSelect} onDeveloperClick={onDeveloperClick} />)}
                             </div>
                         )}
                     </div>
@@ -841,10 +849,14 @@
             );
         };
 
-        const HomeView = ({ onAppSelect, searchQuery, setSearchQuery, onShowAll }) => {
+        const HomeView = ({ onAppSelect, searchQuery, setSearchQuery, onShowAll, onDeveloperClick }) => {
             const filteredApps = useMemo(() => {
                 if (!searchQuery) return MOCK_APPS;
-                return MOCK_APPS.filter(app => app.title.toLowerCase().includes(searchQuery.toLowerCase()) || app.category.toLowerCase().includes(searchQuery.toLowerCase()));
+                return MOCK_APPS.filter(app => 
+                    app.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                    app.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    app.developer.toLowerCase().includes(searchQuery.toLowerCase())
+                );
             }, [searchQuery]);
 
             const trendingApps = filteredApps.filter(a => a.isTrending);
@@ -907,7 +919,7 @@
                             <section>
                                 <h2 className="text-2xl font-bold text-slate-100 mb-6 flex items-center gap-2">🔥 Sering Dicari (Trending)</h2>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
-                                    {trendingApps.map(app => <AppCard key={app.id} app={app} onClick={onAppSelect} />)}
+                                    {trendingApps.map(app => <AppCard key={app.id} app={app} onClick={onAppSelect} onDeveloperClick={onDeveloperClick} />)}
                                 </div>
                             </section>
                         )}
@@ -919,7 +931,7 @@
                             ) : (
                                 <div>
                                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
-                                        {filteredApps.slice(0, 10).map(app => <AppCard key={app.id} app={app} onClick={onAppSelect} />)}
+                                        {filteredApps.slice(0, 10).map(app => <AppCard key={app.id} app={app} onClick={onAppSelect} onDeveloperClick={onDeveloperClick} />)}
                                     </div>
                                     {filteredApps.length > 10 && (
                                         <div className="mt-10 flex justify-center">
@@ -984,7 +996,7 @@
             );
         };
 
-        const AppDetailView = ({ app, onBack }) => {
+        const AppDetailView = ({ app, onBack, onDeveloperClick }) => {
             useEffect(() => { window.scrollTo(0, 0); }, []);
 
             return (
@@ -1009,7 +1021,12 @@
                                         <Badge variant="success">Updated</Badge>
                                     </div>
                                     <h1 className="text-3xl md:text-4xl font-bold text-slate-100 mb-2">{app.title}</h1>
-                                    <p className="text-cyan-400 font-medium mb-6 text-lg">{app.developer}</p>
+                                    <p 
+                                        onClick={() => onDeveloperClick(app.developer)}
+                                        className="text-cyan-400 font-medium mb-6 text-lg cursor-pointer hover:underline inline-block"
+                                    >
+                                        {app.developer}
+                                    </p>
                                     <div className="grid grid-cols-2 md:flex md:flex-wrap gap-4 md:gap-8 text-sm">
                                         <div><p className="text-slate-500 mb-1 flex items-center gap-1"><Monitor size={14}/> Versi</p><p className="font-semibold text-slate-200">{app.version}</p></div>
                                         <div><p className="text-slate-500 mb-1 flex items-center gap-1"><HardDrive size={14}/> Ukuran</p><p className="font-semibold text-slate-200">{app.size}</p></div>
@@ -1210,10 +1227,48 @@
                     </nav>
 
                     <main className="relative z-10">
-                        {currentView === 'home' && <HomeView onAppSelect={navigateToDetail} searchQuery={searchQuery} setSearchQuery={setSearchQuery} onShowAll={navigateToAllApps} />}
-                        {currentView === 'allapps' && <AllAppsView onAppSelect={navigateToDetail} onBack={navigateToHome} />}
+                        {currentView === 'home' && (
+                            <HomeView 
+                                onAppSelect={navigateToDetail} 
+                                searchQuery={searchQuery} 
+                                setSearchQuery={setSearchQuery} 
+                                onShowAll={navigateToAllApps}
+                                onDeveloperClick={(dev) => {
+                                    setSearchQuery(dev);
+                                    const section = document.getElementById('all-apps-section');
+                                    if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                }}
+                            />
+                        )}
+                        {currentView === 'allapps' && (
+                            <AllAppsView 
+                                onAppSelect={navigateToDetail} 
+                                onBack={navigateToHome} 
+                                onDeveloperClick={(dev) => {
+                                    setSearchQuery(dev);
+                                    navigateToHome();
+                                    setTimeout(() => {
+                                        const section = document.getElementById('all-apps-section');
+                                        if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                    }, 100);
+                                }}
+                            />
+                        )}
 
-                        {currentView === 'detail' && selectedApp && <AppDetailView app={selectedApp} onBack={navigateToHome} />}
+                        {currentView === 'detail' && selectedApp && (
+                            <AppDetailView 
+                                app={selectedApp} 
+                                onBack={navigateToHome} 
+                                onDeveloperClick={(dev) => {
+                                    setSearchQuery(dev);
+                                    navigateToHome();
+                                    setTimeout(() => {
+                                        const section = document.getElementById('all-apps-section');
+                                        if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                    }, 100);
+                                }}
+                            />
+                        )}
                     </main>
 
                     <footer className="relative z-10 border-t border-white/[0.05] bg-black/40 backdrop-blur-md pt-16 pb-8">
