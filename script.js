@@ -811,14 +811,14 @@ const AppDetailView = ({ app, onBack }) => {
                     <div className="lg:col-span-2 space-y-8">
                         <div className="bg-white/[0.02] border border-white/[0.05] rounded-3xl p-6 md:p-8">
                             <h3 className="text-xl font-bold text-slate-100 mb-4 flex items-center gap-2"><Info className="text-cyan-400" /> Description</h3>
-                            <p className="text-slate-300 leading-relaxed">{app.description}</p>
+                            <p className="text-slate-300 text-sm leading-relaxed">{app.description}</p>
                         </div>
                         <div className="bg-white/[0.02] border border-white/[0.05] rounded-3xl p-6 md:p-8">
                             <h3 className="text-xl font-bold text-slate-100 mb-4 flex items-center gap-2"><Sparkles className="text-purple-400" /> Modification Features</h3>
                             <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                 {app.features.map((feat, i) => (
-                                    <li key={i} className="flex items-start gap-3 text-slate-300 bg-white/[0.02] p-3 rounded-xl border border-white/[0.05]">
-                                        <ShieldCheck className="text-emerald-400 shrink-0" size={20} /><span>{feat}</span>
+                                    <li key={i} className="flex items-start gap-3 text-slate-300 text-sm bg-white/[0.02] p-3 rounded-xl border border-white/[0.05]">
+                                        <ShieldCheck className="text-emerald-400 shrink-0" size={18} /><span>{feat}</span>
                                     </li>
                                 ))}
                             </ul>
