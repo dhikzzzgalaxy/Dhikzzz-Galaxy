@@ -151,13 +151,13 @@ const HomeView = ({ apps, materialCategories, onAppSelect, searchQuery, setSearc
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none" />
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10 mb-6 backdrop-blur-md">
                     <Sparkles size={16} className="text-blue-400" />
-                    <span className="text-xs font-semibold text-slate-300">Platform Download Aplikasi Mod Terpercaya</span>
+                    <span className="text-xs font-semibold text-slate-300">100% Terpercaya Tanpa Virus & Malware</span>
                 </div>
                 <h1 className="text-4xl md:text-6xl font-extrabold text-slate-100 tracking-tight mb-6 max-w-3xl">
                     Temukan & Download <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400">Aplikasi Mod Terbaik</span>
                 </h1>
                 <p className="text-slate-400 text-base md:text-lg max-w-xl mb-10">
-                    Koleksi aplikasi modifikasi pilihan dengan fitur premium terbuka, aman, dan selalu diperbarui setiap hari.
+                    Temukan Aplikasi Modifikasi Pilihan Dengan Fitur Premium, Tanpa Iklan, Dan Berbagai Fitur Berbayar Lainnya Yang Telah Terbuka 
                 </p>
 
                 {/* Search Bar */}
@@ -185,7 +185,7 @@ const HomeView = ({ apps, materialCategories, onAppSelect, searchQuery, setSearc
                 <section className="max-w-7xl mx-auto px-4 md:px-8 mb-16">
                     <div className="flex items-center justify-between mb-6">
                         <h2 className="text-2xl font-bold text-slate-100 flex items-center gap-2">
-                            <Clock className="text-blue-400" size={24} /> Rilis Terbaru
+                            <Clock className="text-blue-400" size={24} /> Aplikasi Terbaru 
                         </h2>
                     </div>
                     <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0">
@@ -201,7 +201,7 @@ const HomeView = ({ apps, materialCategories, onAppSelect, searchQuery, setSearc
                 <section className="max-w-7xl mx-auto px-4 md:px-8 mb-16">
                     <div className="flex items-center justify-between mb-6">
                         <h2 className="text-2xl font-bold text-slate-100 flex items-center gap-2">
-                            <Sparkles className="text-yellow-400" size={24} /> Trending Minggu Ini
+                            <Sparkles className="text-yellow-400" size={24} /> Aplikasi Sering Dicari
                         </h2>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
